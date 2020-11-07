@@ -6,6 +6,7 @@ import Search from "./components/Search";
 import BookList from "./components/BookList";
 import About from './pages/About';
 import data from "./models/books.json";
+import Pagination from 'react-js-pagination';
 
 
 
@@ -17,6 +18,9 @@ import { render } from "@testing-library/react";
 const App = (props) => {
   const [books, setBooks] = useState(data);
   const [keyword, setKeyword] = useState("");
+  const [pageCount] = useState (5);
+  const [currentPage, setCurrentPage] = useState(1);
+
   //const [cart, setCart] = useState([]);
 
   //const addBook = (book) => {
@@ -57,7 +61,10 @@ const App = (props) => {
   //<BookList books={books} addBook={addBook} />
   //</div>
   //);
-  
+  //const indexOflastBook = currentPage*pageCount;
+  //const indexoffirstbook = indexOflastBook-pageCount;
+  //const currentbooks = books.slice(indexoffirstbook, indexoflastbook);
+  const changepage = pagenumber => setCurrentPage(pagenumber);
   return (
     <BrowserRouter>
   
@@ -72,6 +79,20 @@ const App = (props) => {
               setKeyword={setKeyword}
             />
             <BookList books={books} addBook={addBook}  />
+          <Pagination
+              previousLabel={"prev"}
+              nextLabel={"next"}
+              breakLabel={"..."}
+              marginPagesDisplay={2}
+              pageRangeDisplay={5}
+              onChange={changepage}
+              containerClassName={"pagination"}
+              subContainerClassName={"pages pagination"}
+              activePage={currentPage}
+              totalItemsCount={books.length}
+              itemsCountPerPage={pageCount}
+              activeClassName={"active"}/>
+              
           </React.Fragment>
         )}
       />
