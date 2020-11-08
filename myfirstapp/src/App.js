@@ -6,12 +6,15 @@ import Search from "./components/Search";
 import BookList from "./components/BookList";
 import About from './pages/About';
 import data from "./models/books.json";
-import Pagination from 'react-js-pagination';
+import { Layout } from './components/Layout';
+import Pagination from "react-js-pagination";
+
+
 
 
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import { render } from "@testing-library/react";
+import { render } from "@testing-library/react"; 
  
 
 
@@ -64,14 +67,16 @@ const App = (props) => {
   //const indexOflastBook = currentPage*pageCount;
   //const indexoffirstbook = indexOflastBook-pageCount;
   //const currentbooks = books.slice(indexoffirstbook, indexoflastbook);
+
+
   const changepage = pagenumber => setCurrentPage(pagenumber);
   return (
     <BrowserRouter>
-  
       <Route exact
         path="/"
         render={() => (
           <React.Fragment>
+            <Layout>
             <Header />
             <Search
               findBooks={findBooks}
@@ -79,7 +84,7 @@ const App = (props) => {
               setKeyword={setKeyword}
             />
             <BookList books={books} addBook={addBook}  />
-          <Pagination
+            <Pagination
               previousLabel={"prev"}
               nextLabel={"next"}
               breakLabel={"..."}
@@ -89,10 +94,11 @@ const App = (props) => {
               containerClassName={"pagination"}
               subContainerClassName={"pages pagination"}
               activePage={currentPage}
+              currentPage={currentPage}
               totalItemsCount={books.length}
               itemsCountPerPage={pageCount}
               activeClassName={"active"}/>
-              
+               </Layout>
           </React.Fragment>
         )}
       />
@@ -110,7 +116,9 @@ const App = (props) => {
         path="/About"
         render={() => (
           <React.Fragment>
+            <Layout>
             <About />
+            </Layout>
           </React.Fragment>
         )}
       />
