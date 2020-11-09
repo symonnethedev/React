@@ -8,7 +8,7 @@ import About from './pages/About';
 import data from "./models/books.json";
 import { Layout } from './components/Layout';
 import Pagination from "react-js-pagination";
-import navBar from "./components/navBar";
+//import navBar from "./components/navBar";
 
 import './components/App.css';
 
@@ -25,6 +25,7 @@ const App = (props) => {
   const [pageCount] = useState (5);
   const [currentPage, setCurrentPage] = useState(1);
 
+  // add cart!
   //const [cart, setCart] = useState([]);
 
   //const addBook = (book) => {
@@ -78,7 +79,6 @@ const App = (props) => {
         path="/"
         render={() => (
           <React.Fragment>
-            <NavBar />
             <Layout>
             <Header />
             <Search
