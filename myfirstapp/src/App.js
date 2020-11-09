@@ -8,8 +8,9 @@ import About from './pages/About';
 import data from "./models/books.json";
 import { Layout } from './components/Layout';
 import Pagination from "react-js-pagination";
+import navBar from "./components/navBar";
 
-
+import './components/App.css';
 
 
 
@@ -69,13 +70,15 @@ const App = (props) => {
   //const currentbooks = books.slice(indexoffirstbook, indexoflastbook);
 
 
-  const changepage = pagenumber => setCurrentPage(pagenumber);
+  
+ const changepage = pagenumber => setCurrentPage(pagenumber);
   return (
     <BrowserRouter>
       <Route exact
         path="/"
         render={() => (
           <React.Fragment>
+            <NavBar />
             <Layout>
             <Header />
             <Search

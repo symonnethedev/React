@@ -1,5 +1,7 @@
-h1 {
-  font-size: 3em;
-  line-height: 1;
-  margin-bottom: 0.5em;
+header {
+  background-color: #282c34;
+  color: white;
+  padding: 40px;
+  font-family: Arial;
+  text-align: center;
 }
